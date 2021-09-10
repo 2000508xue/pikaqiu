@@ -206,8 +206,8 @@ const string = `
 }
 ` //创建文件夹  声明string   导出string   export default string     在原来的js文件夹引入   import string from './ .js'
 let n = 1
-demo.innerText = string.substr(0, n)
-demo2.innerHTML = string.substr(0, n)
+// demo.innerText = string.substr(0, n)
+// demo2.innerHTML = string.substr(0, n)
 
 let time = 100
 
@@ -220,6 +220,7 @@ const run = () => {
     demo.innerText = string.substr(0, n)
     demo2.innerHTML = string.substr(0, n)
     demo.scrollTop = demo.scrollHeight
+    console.log(demo.scrollHeight,'@@@@',demo.scrollTop);
 }
 
 const pause = () => {
@@ -233,25 +234,23 @@ const play = () => {
 let id = play()
 
 const slow = () => {
-    window.clearInterval(id)
+    pause(id)
     time = 300
     id = play()
 }
 const normal = () => {
-    window.clearInterval(id)
+    pause(id)
     time = 100
     id = play()
 }
 const fast = () => {
-    window.clearInterval(id)
+    pause(id)
     time = 0
     id = play()
 }
 
 btnPause.onclick = pause
-btnPlay.onclick = () => {
-    id = play()
-}
+btnPlay.onclick = () => {id = play()}
 btnSlow.onclick = slow
 btnNormal.onclick = normal
 btnFast.onclick = fast
